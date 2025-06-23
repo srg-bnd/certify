@@ -1,5 +1,8 @@
 require: rubocop-rails
 
+AllCops:
+  NewCops: enable
+
 Metrics/AbcSize:
   Enabled: false
 
@@ -12,8 +15,8 @@ Metrics/MethodLength:
 Naming/PredicateName:
   Enabled: false
 
-Style/ClassAndModuleChildren:
-  EnforcedStyle: compact
+# Style/ClassAndModuleChildren:
+  # EnforcedStyle: compact
 
 Style/Documentation:
   Enabled: false
@@ -27,8 +30,8 @@ Style/IfUnlessModifier:
 Style/Lambda:
   EnforcedStyle: literal
 
-Style/SymbolArray:
-  EnforcedStyle: brackets
+# Style/SymbolArray:
+  # EnforcedStyle: brackets
 
 Style/WordArray:
   EnforcedStyle: brackets

@@ -1,4 +1,4 @@
-# Pagination
+# Paginates records
 require_relative 'info'
 require_relative 'page'
 

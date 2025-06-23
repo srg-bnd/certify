@@ -1,5 +1,7 @@
+# frozen_string_literal: true
+
 FactoryBot.define do
   factory :domain do
-    name { 'google.com' }
+    name { Faker::Internet.url }
   end
 end

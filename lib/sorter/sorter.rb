@@ -1,11 +1,10 @@
-# Sorted
-
+# Sorts records
 class Sorter
   def initialize(items: nil,
-                default_column: 'created_at',
-                default_type: :desc,
-                available_columns: nil,
-                available_types: [:asc, :desc])
+                 default_column: 'created_at',
+                 default_type: :desc,
+                 available_columns: nil,
+                 available_types: [:asc, :desc])
     @items = items
     @default_column = default_column
     @default_type = default_type

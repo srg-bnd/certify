@@ -1,30 +1,34 @@
-class Domains::IndexService < Service
-  COLUMNS_WITH_IDS = [].freeze
+# frozen_string_literal: true
 
-  def call(params)
-    domains = Domain.all
-    domains = filter_list(domains, params)
-    domains = order_list(domains, params)
+module Domains
+  class IndexService < Service
+    COLUMNS_WITH_IDS = [].freeze
 
-    success(domains)
-  end
+    def call(params)
+      domains = Domain.all
+      domains = filter_list(domains, params)
+      domains = order_list(domains, params)
 
-  private
+      success(domains)
+    end
 
-  def filter_list(domains, params)
-    Domains::FilteringService.new(domains).call(params).data!
-  end
+    private
 
-  def order_list(projects, params)
-    Sorter.new(
-      items: projects,
-      available_columns: ['created_at'],
-      default_column: 'created_at',
-      default_type: :desc
-    ).call(
-      column: params[:order_column],
-      type: params[:order_type],
-      add_id: COLUMNS_WITH_IDS.include?(params[:order_column])
-    )
+    def filter_list(domains, params)
+      Domains::FilteringService.new(domains).call(params).data!
+    end
+
+    def order_list(projects, params)
+      Sorter.new(
+        items: projects,
+        available_columns: ['created_at'],
+        default_column: 'created_at',
+        default_type: :desc
+      ).call(
+        column: params[:order_column],
+        type: params[:order_type],
+        add_id: COLUMNS_WITH_IDS.include?(params[:order_column])
+      )
+    end
   end
 end

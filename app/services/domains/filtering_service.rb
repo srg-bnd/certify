@@ -1,23 +1,27 @@
-class Domains::FilteringService < Service
-  def initialize(domains)
-    @domains = domains
-  end
+# frozen_string_literal: true
 
-  def call(params = {})
-    domains = @domains
-    query = params[:query]
-
-    if query.present?
-      domains = with_query(domains, query)
+module Domains
+  class FilteringService < Service
+    def initialize(domains)
+      @domains = domains
     end
 
-    success(domains)
-  end
+    def call(params = {})
+      domains = @domains
+      query = params[:query]
 
-  private
+      if query.present?
+        domains = with_query(domains, query)
+      end
 
-  def with_query(domains, query)
-    query = "%#{query}%"
-    domains.where('name ILIKE :query', query: query)
+      success(domains)
+    end
+
+    private
+
+    def with_query(domains, query)
+      query = "%#{query}%"
+      domains.where('name ILIKE :query', query: query)
+    end
   end
 end

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 module APIHelpers
   module PaginationHelper
     def pagination(objects)

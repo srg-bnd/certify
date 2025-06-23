@@ -10,21 +10,19 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2020_02_08_091607) do
-
+ActiveRecord::Schema[7.2].define(version: 2025_02_08_091607) do
   # These are extensions that must be enabled in order to support this database
-  enable_extension "fuzzystrmatch"
   enable_extension "pg_trgm"
   enable_extension "plpgsql"
-  enable_extension "unaccent"
 
   create_table "domains", force: :cascade do |t|
     t.string "name"
-    t.datetime "created_at", precision: 6, null: false
-    t.datetime "updated_at", precision: 6, null: false
-    t.string "aasm_state"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.string "aasm_state", null: false
+    t.string "state_info"
+    t.index ["aasm_state"], name: "index_domains_on_aasm_state"
     t.index ["name"], name: "index_domains_on_name", unique: true
     t.index ["name"], name: "index_domains_on_name_with_gist", opclass: :gist_trgm_ops, using: :gist
   end
-
 end

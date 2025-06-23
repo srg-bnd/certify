@@ -18,13 +18,16 @@ The monitored parameters:
 
 | method | path    | action                |
 | ------ | ------- | --------------------- |
-| GET    | /status | list of domain states |
-| POST   | /domain | track the domain      |
+| GET    | /domains | list of domains states |
+| POST   | /domains | add a tracking domain |
+| POST   | /domains/{id}/track | start tracking |
+| POST   | /domains/{id}/untrack | stop tracking |
+| DELETE | /domains/{id} | remove the domain |
 
 ### Description
 
 <details>
-  <summary>GET /status:</summary>
+  <summary>GET /domains:</summary>
 
 * params
   * filters
@@ -43,7 +46,7 @@ The monitored parameters:
 </details>
 
 <details>
-  <summary>POST /domain:</summary>
+  <summary>POST /domains:</summary>
 
 * params
   * name: String (domain)
@@ -59,7 +62,7 @@ The monitored parameters:
 
 Install necessary dependencies:
 
-* `Postgresql` -v 11 (or higher)
+* `Postgresql` -v 14 (or higher)
 * `Redis` with access by password
 
 #### Prepare the server

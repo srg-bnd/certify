@@ -1,5 +1,11 @@
+# frozen_string_literal: true
+
 class Service < SingleActionService::Base
   DEFAULT_ERROR = ErrorCodes::ERROR
+
+  def error_data(data)
+    error(data: data)
+  end
 
   def error_code(code = DEFAULT_ERROR)
     error(code: code)

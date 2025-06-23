@@ -25,8 +25,9 @@ RSpec.describe Domain, type: :model do
     end
 
     it 'should validate the uniqueness of the name' do
-      create :domain
-      domain = build :domain
+      name = Faker::Internet.url
+      create :domain, name: name
+      domain = build :domain, name: name
 
       expect(domain).not_to be_valid
       expect(domain.errors.details[:name]).to include(

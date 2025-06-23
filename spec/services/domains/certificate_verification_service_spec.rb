@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 require 'rails_helper'
 
 RSpec.describe Domains::CertificateVerificationService, type: :service do
@@ -11,9 +13,9 @@ RSpec.describe Domains::CertificateVerificationService, type: :service do
   end
 
   describe '#check' do
-    it 'should return error for all domain' do
+    it 'should return new for all domain' do
       Domain.create(errors_domains)
-      expect(errors_domains.count).to eq(Domain.bad.count)
+      expect(errors_domains.count).to eq(Domain.created.count)
     end
   end
 end

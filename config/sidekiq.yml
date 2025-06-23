@@ -8,6 +8,6 @@ production:
 :scheduler:
   :schedule:
     certificate_verification:
-      every: 30m
+      every: 30s
       class: CertificateVerificationJob
       queue: default

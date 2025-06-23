@@ -1,7 +1,13 @@
+# frozen_string_literal: true
+
 class API < Grape::API
+  format :json
+
   prefix 'api'
 
-  mount Domains
+  namespace :domains do
+    mount Domains::API
+  end
 
   rescue_from Grape::Exceptions::ValidationErrors do |e|
     rack_response({
