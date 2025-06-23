@@ -1,4 +1,4 @@
-# Correct Certificate
+# Certify
 
 Monitoring SSL certificates.
 
@@ -9,7 +9,7 @@ The monitored parameters:
 * The certificate expires in less than 2 weeks
 * The certificate expires in less than 1 week
 * The certificate has expired
-* SSL error
+* Other SSL error
 
 ## API
 
@@ -51,8 +51,12 @@ The monitored parameters:
 * params
   * name: String (domain)
 * response: Object
+  * id: Integer
   * name: String (domain)
-  * status: String
+  * status: String (`ok`, `bad`, `unknown`, `untracked`)
+  * status_error: String
+  * created_at: DateTime
+  * updated_at: DateTime
 
 </details>
 
